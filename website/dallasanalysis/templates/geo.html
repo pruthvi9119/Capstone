@@ -1,0 +1,92 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geo Analysis - Dallas Restaurant Analysis</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</head>
+
+<body style="background-image: url('{% static 'images/ht.jpg' %}');">
+    <!-- Title Section -->
+    <div class="title">
+        <h1>Geographic Analysis</h1>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="main-header">
+        <nav class="navbar">
+            <a href="{% url 'home' %}">Home</a>
+            <div class="dropdown">
+                <a onclick="toggleDropdown()" class="login-button">Categories</a>
+                <div class="dropdown-content" id="dropdown-content">
+                    <a href="{% url 'allrestaurants' %}">All Restaurants</a>
+                    <a href="{% url 'restauranttype' %}">Restaurant Type</a>
+                    <a href="{% url 'restaurantname'%}">Restaurant Name</a>
+                    <a href="{% url 'zipcode' %}">Zipcode</a>
+                    <a href="{% url 'streetaddress' %}">Street Address</a>
+                    <a href="{% url 'inspectionscore'%}">Inspection Score</a>
+                </div>
+            </div>
+
+
+            <a href="{% url 'geo' %}">Geo</a>
+            <a href="{% url 'inspectionpolicy' %}" class="active">Inspection Policy</a>
+           
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="content">
+        <div class="block-container">
+            <!-- Geographic Patterns Block -->
+            <section id="geo-overview" class="content-block">
+                <h2>Geographic Patterns</h2>
+                <p>Analyze geographic trends in restaurant health scores across Dallas. The map below highlights areas with high and low scores, helping residents make safer dining choices.</p>
+                <!-- Example Placeholder for Map -->
+                <div class="map-placeholder" style="height: 300px; background-color: #e0e0e0; display: flex; align-items: center; justify-content: center;">
+                    <p>Map Placeholder (Integrate with map API like Google Maps)</p>
+                </div>
+            </section>
+
+            <!-- Violation Hotspots Block -->
+            <section id="hotspots" class="content-block">
+                <h2>Violation Hotspots</h2>
+                <p>Identify hotspots where health code violations are more frequent. This analysis helps target inspections and improve health standards in specific areas.</p>
+                <ul>
+                    <li>Zip Codes with highest violation counts</li>
+                    <li>Frequent types of violations by area</li>
+                    <li>Insights on neighborhood health standards</li>
+                </ul>
+            </section>
+
+            <!-- Data Sources Block -->
+            <section id="data-sources" class="content-block">
+                <h2>Data Sources</h2>
+                <p>The geographic analysis relies on data from public health inspections and geographic data APIs. Using accurate and up-to-date data ensures our insights are reliable for residents and health officials.</p>
+                <ul>
+                    <li>Dallas Public Health Inspection Records</li>
+                    <li>Mapping and Geolocation APIs</li>
+                    <li>Open Data Sources for demographic analysis</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>&copy; 2024 Dallas Restaurant Analysis. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Dropdown (if needed) -->
+    <script>
+    function toggleDropdown() {
+        const dropdown = document.getElementById("dropdown-content");
+        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    }
+    </script>
+</body>
+</html>
+

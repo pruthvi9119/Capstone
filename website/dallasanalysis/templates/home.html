@@ -1,0 +1,91 @@
+
+
+
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static  'css/main.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capstone</title>
+    
+</head>
+
+
+<body style="background-image: url( '{ % static 'images/ht.jpg'   % }')" ;>
+
+    <div class="title">
+        <h1>DALLAS RESTAURANT ANALYSIS</h1>
+    </div>
+
+
+    <header class="main-header">
+            
+            <nav class="navbar">
+                    <a href="{% url 'home' %}">Home</a>
+
+
+                    <div class="dropdown">
+                        <a onclick="toggleDropdown()" class="login-button">Categories</a>
+                        <div class="dropdown-content" id="dropdown-content">
+                            <a href="{% url 'allrestaurants' %}">All Restaurants</a>
+                            <a href="{% url 'restauranttype' %}">Restaurant Type</a>
+                            <a href="{% url 'restaurantname'%}">Restaurant Name</a>
+                            <a href="{% url 'zipcode' %}">Zipcode</a>
+                            <a href="{% url 'streetaddress' %}">Street Address</a>
+                            <a href="{% url 'inspectionscore'%}">Inspection Score</a>
+
+                            
+
+                        </div>
+                    </div>
+                   
+                    <a href="{% url 'geo' %}">Geo</a>
+                    <a href="{% url 'inspectionpolicy' %}">Inspection Policy</a>
+                    <a href="{% url 'powerbidashboard' %}">Dashboard</a>
+
+             
+            </nav>
+    </header>
+     <main class="content">
+        <div class="block-container">
+            <!-- Introduction Block -->
+            <section id="introduction" class="content-block">
+                <h2>Introduction</h2>
+                <p>Welcome to the Dallas Restaurant Analysis project. This project aims to provide insights into restaurant safety, helping residents make informed dining choices based on data-driven analyses of inspection scores and common health violations.</p>
+            </section>
+
+            <!-- Objectives Block -->
+            <section id="objectives" class="content-block">
+                <h2>Objectives</h2>
+                <ul>
+                    <li>Analyze inspection score trends to track improvements or declines over time.</li>
+                    <li>Identify common and critical violations affecting restaurant scores.</li>
+                    <li>Map violation hotspots to highlight areas requiring more oversight.</li>
+                    <li>Provide actionable insights for restaurant owners and health officials.</li>
+                </ul>
+            </section>
+
+            <!-- Approach Block -->
+            <section id="approach" class="content-block">
+                <h2>Our Approach</h2>
+                <p>Our approach includes analyzing inspection data, identifying high-risk areas, categorizing restaurants by type, and employing Natural Language Processing (NLP) to classify restaurants. By combining data analytics with geographic mapping, we create a comprehensive overview of restaurant safety in Dallas.</p>
+            </section>
+        </div>
+
+        <footer class="main-footer">
+            <p>&copy; . All rights reserved.</p>
+        </footer>
+
+</body>
+<script>
+function toggleDropdown() {
+    const dropdown = document.getElementById("dropdown-content");
+    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+}
+</script>
+</html>

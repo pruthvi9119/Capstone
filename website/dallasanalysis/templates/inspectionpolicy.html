@@ -1,0 +1,116 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspection Policy - Dallas Restaurant Analysis</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</head>
+<body style="background-image: url('{% static 'images/ht.jpg' %}');">
+    <!-- Title Section -->
+    <div class="title">
+        <h1>Inspection Policy</h1>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="main-header">
+        <nav class="navbar">
+            <a href="{% url 'home' %}">Home</a>
+
+
+            <div class="dropdown">
+            <a onclick="toggleDropdown()" class="login-button">Categories</a>
+                <div class="dropdown-content" id="dropdown-content">
+                    <a href="{% url 'allrestaurants' %}">All Restaurants</a>
+                    <a href="{% url 'restauranttype' %}">Restaurant Type</a>
+                    <a href="{% url 'restaurantname'%}">Restaurant Name</a>
+                    <a href="{% url 'zipcode' %}">Zipcode</a>
+                    <a href="{% url 'streetaddress' %}">Street Address</a>
+                    <a href="{% url 'inspectionscore'%}">Inspection Score</a>
+                </div>
+            </div>
+
+            <a href="{% url 'geo' %}">Geo</a>
+            <a href="{% url 'inspectionpolicy' %}" class="active">Inspection Policy</a>
+            
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="content">
+        <div class="block-container">
+            <!-- Inspection Frequency Block -->
+            <section id="inspection-frequency" class="content-block">
+                <h2>Inspection Frequency</h2>
+                <p>Restaurants are inspected at least twice a year, with more frequent inspections for establishments that have previously failed or have a history of violations.</p>
+            </section>
+
+            <!-- Grading Scale Block -->
+            <section id="grading-scale" class="content-block">
+                <h2>Grading Scale</h2>
+                <p>Inspection scores range from 0 to 100:</p>
+                <ul>
+                    <li><strong>90-100</strong>: Very good</li>
+                    <li><strong>80-89</strong>: Satisfactory but requires improvements</li>
+                    <li><strong>70-79</strong>: Marginal, needing significant improvements and more frequent follow-ups</li>
+                    <li><strong>60-69</strong>: Failing, requires re-inspection within 10 days</li>
+                    <li><strong>Below 60</strong>: Immediate closure until critical violations are resolved</li>
+                </ul>
+            </section>
+
+            <!-- Violation Types Block -->
+            <section id="violation-types" class="content-block">
+                <h2>Violation Types</h2>
+                <p>Violations are categorized into three levels based on severity:</p>
+                <ul>
+                    <li><strong>Critical Violations</strong>: Direct threats to public health; require immediate attention.</li>
+                    <li><strong>Non-Critical Violations</strong>: Less severe, but still need corrective actions.</li>
+                    <li><strong>Minor Violations</strong>: Least severe, with minimal impact on health but need addressing.</li>
+                </ul>
+            </section>
+
+            <!-- Violation Score System Block -->
+            <section id="violation-score-system" class="content-block">
+                <h2>Violation Score System</h2>
+                <p>Each violation results in a specific point deduction based on severity:</p>
+                <ul>
+                    <li><strong>Critical Violation Example</strong>: Presence of pests or improper food handling temperatures (4-5 points deduction).</li>
+                    <li><strong>Non-Critical Violation Example</strong>: Improper labeling or minor sanitation issues (2-3 points deduction).</li>
+                    <li><strong>Minor Violation Example</strong>: Slightly cluttered storage or minor documentation issues (1 point deduction).</li>
+                </ul>
+            </section>
+
+            <!-- Impact on Overall Score Block -->
+            <section id="impact-on-score" class="content-block">
+                <h2>Impact on Overall Score</h2>
+                <p>The overall inspection score starts at 100, with deductions based on violations:</p>
+                <ul>
+                    <li><strong>Score 90-100</strong>: Very good, follow-up inspections every six months.</li>
+                    <li><strong>Score 80-89</strong>: Satisfactory but needs improvements.</li>
+                    <li><strong>Score 70-79</strong>: Marginal, requiring more frequent follow-ups.</li>
+                    <li><strong>Score 60-69</strong>: Failing, requiring re-inspection within 10 days.</li>
+                    <li><strong>Below 60</strong>: Immediate closure until critical issues are resolved.</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+    
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>&copy; 2024 Dallas Restaurant Analysis. All rights reserved.</p>
+    </footer>
+
+     <!-- JavaScript for Dropdown (if needed) -->
+    <script>
+    function toggleDropdown() {
+        const dropdown = document.getElementById("dropdown-content");
+        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    }
+    </script>
+</body>
+</html>
+

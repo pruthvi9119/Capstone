@@ -1,0 +1,129 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search by Street Address</title>
+    <style>
+        body {
+            background-image: url("{% static 'images/ht.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        header a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        table {
+            margin: 20px auto;
+            width: 90%;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+            color: #000;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #333;
+            color: white;
+        }
+
+        p {
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'geo' %}">Geo</a>
+        <a href="{% url 'inspectionpolicy' %}">Inspection Policy</a>
+        <a href="{% url 'allrestaurants' %}">All Restaurants</a>
+        <a href="{% url 'restauranttype' %}">Restaurant Type</a>
+        <a href="{% url 'zipcode' %}">Zipcode Search</a>
+    </header>
+
+    <h1>Search Restaurants by Street Address</h1>
+
+    <form method="get" action="{% url 'streetaddress' %}">
+        <label for="street_address">Enter Street Address:</label>
+        <input type="text" id="street_address" name="street_address" value="{{ query|default:'' }}">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if query %}
+        <h2>Results for "{{ query }}"</h2>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% elif results %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Restaurant Name</th>
+                        <th>Street Address</th>
+                        <th>Inspection Type</th>
+                        <th>Inspection Date</th>
+                        <th>Inspection Score</th>
+                        <th>Zip Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in results %}
+                        <tr>
+                            <td>{{ row.Restaurant_Name }}</td>
+                            <td>{{ row.Street_Address }}</td>
+                            <td>{{ row.Inspection_Type }}</td>
+                            <td>{{ row.Inspection_Date }}</td>
+                            <td>{{ row.Inspection_Score }}</td>
+                            <td>{{ row.Zip_Code }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No restaurants found matching "{{ query }}".</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
